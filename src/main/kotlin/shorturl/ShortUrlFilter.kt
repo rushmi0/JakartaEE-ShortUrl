@@ -1,4 +1,4 @@
-package com.brightbetter.extension.shorturl
+package win.rushmi0.extension.shorturl
 
 import jakarta.servlet.*
 import jakarta.servlet.http.HttpServletRequest

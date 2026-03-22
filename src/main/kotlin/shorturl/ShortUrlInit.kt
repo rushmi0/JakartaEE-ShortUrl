@@ -1,4 +1,4 @@
-package com.brightbetter.extension.shorturl
+package win.rushmi0.extension.shorturl
 
 import jakarta.servlet.ServletContextEvent
 import jakarta.servlet.ServletContextListener
@@ -25,26 +25,17 @@ class ShortUrlInit : ServletContextListener {
             ds.connection.use { conn ->
                 conn.createStatement().use { stmt ->
                     stmt.execute("""
-                        IF OBJECT_ID('dbo.SHORT_URL', 'U') IS NULL
+                        IF OBJECT_ID('dbo.T_SHORT_URL', 'U') IS NULL
                         CREATE TABLE dbo.SHORT_URL (
                             URL_CODE    NVARCHAR(50)    NOT NULL PRIMARY KEY,
                             TARGET_URL  NVARCHAR(2000)  NOT NULL,
                             ACTIVE      NVARCHAR(1)     NOT NULL DEFAULT '1',
                             CREATE_DATE DATETIME        NOT NULL DEFAULT GETDATE(),
-                            CREATE_BY   NVARCHAR(50)    NOT NULL DEFAULT ''
+                            CREATE_BY   NVARCHAR(50)    NOT NULL
                         )
                     """.trimIndent())
                 }
             }
-
-            ctx?.log("[ShortUrl] table SHORT_URL ready")
-            ctx?.log("[ShortUrl] plugin started successfully")
-            ctx?.log("""
-            
-               [ShortUrl] table SHORT_URL ready
-               [ShortUrl] plugin started successfully
-               
-        """.trimIndent())
 
         } catch (e: Exception) {
             ctx?.log("[ShortUrl] ERROR during initialization: ${e.message}")
@@ -54,4 +45,5 @@ class ShortUrlInit : ServletContextListener {
     override fun contextDestroyed(sce: ServletContextEvent?) {
         sce?.servletContext?.log("[ShortUrl] plugin stopped")
     }
+
 }

@@ -1,4 +1,4 @@
-package com.brightbetter.extension.shorturl
+package win.rushmi0.extension.shorturl
 
 import javax.naming.InitialContext
 import javax.sql.DataSource

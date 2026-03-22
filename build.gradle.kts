@@ -3,7 +3,7 @@ plugins {
     `java-library`
 }
 
-group = "com.brightbetter.extension"
+group = "win.rushmi0.extension"
 version = "1.0"
 
 repositories {

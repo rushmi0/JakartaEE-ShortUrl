@@ -1,4 +1,4 @@
-package com.brightbetter.extension
+package win.rushmi0.extension
 
 
 interface Platform {
