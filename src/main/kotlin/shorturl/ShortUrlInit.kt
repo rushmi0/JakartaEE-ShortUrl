@@ -26,7 +26,7 @@ class ShortUrlInit : ServletContextListener {
                 conn.createStatement().use { stmt ->
                     stmt.execute("""
                         IF OBJECT_ID('dbo.T_SHORT_URL', 'U') IS NULL
-                        CREATE TABLE dbo.SHORT_URL (
+                        CREATE TABLE dbo.T_SHORT_URL (
                             URL_CODE    NVARCHAR(50)    NOT NULL PRIMARY KEY,
                             TARGET_URL  NVARCHAR(2000)  NOT NULL,
                             ACTIVE      NVARCHAR(1)     NOT NULL DEFAULT '1',
